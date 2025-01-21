@@ -1,22 +1,24 @@
-import * as action from "./actions.js";
+import {ScreenManager} from "./screen-manager.js";
+import {Display} from "./display-manager.js";
+import {calc} from "./calculator.js"
 
-let output = {
-    input: document.getElementById("input"),
-    lastOperation: document.getElementById("last-operation")
+const currentDisplay = new Display(document.getElementById("current-display"))
+const lastOperationDisplay = new Display(document.getElementById("last-operation-display"))
+
+const screenManager = new ScreenManager(currentDisplay, lastOperationDisplay)
+
+const buttons = document.querySelectorAll("[data-printed]")
+for (const button of buttons) {
+  button.addEventListener('click', () => screenManager.print(button.textContent))
 }
 
-let buttons = document.querySelectorAll("[data-printed]")
-for (let button of buttons) {
-    button.onclick = () => action.print.call(button, output)
-}
+const clearButton = document.getElementById("clear")
+clearButton.addEventListener('click', () => currentDisplay.setValue(''))
+clearButton.addEventListener('click', () => lastOperationDisplay.setValue(''))
 
-document.getElementById("clear")
-    .onclick = () => action.clear(output)
-document.getElementById("equal")
-    .onclick = () => action.result(output)
+const equalButton = document.getElementById("equal")
+equalButton.addEventListener('click', () =>
+  screenManager.printResult(calc(currentDisplay.getValue())))
 
-// kastuli
-document.getElementById("percent")
-    .onclick = null
-document.getElementById("plus-minus")
-    .onclick = null
+document.getElementById("percent").onclick = null
+document.getElementById("plus-minus").onclick = null
