@@ -13,7 +13,7 @@
     position: relative;
 }
 
-#input, #last-operation {
+#current-display, #last-operation-display {
     position: absolute;
     bottom: 0;
     right: 20px;
@@ -23,7 +23,7 @@
     color: white;
 }
 
-#last-operation {
+#last-operation-display {
     bottom: 50px;
     font-size: 20px;
     color: gray;
