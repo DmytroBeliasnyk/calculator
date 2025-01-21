@@ -3,9 +3,9 @@ let operators = new Map()
         return a + b
     }).set("-", (a, b) => {
         return a - b
-    }).set("*", (a, b) => {
+    }).set("\u00D7", (a, b) => {
         return a * b
-    }).set("/", (a, b) => {
+    }).set("\u00F7", (a, b) => {
         return a / b
     })
 
