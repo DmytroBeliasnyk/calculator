@@ -1,6 +1,6 @@
 import {ScreenManager} from "./screen-manager.js";
 import {Display} from "./display-manager.js";
-import {calc} from "./calculator.js"
+import {calculateResult} from "./calculator.js"
 
 const currentDisplay = new Display(document.getElementById("current-display"))
 const lastOperationDisplay = new Display(document.getElementById("last-operation-display"))
@@ -18,7 +18,7 @@ clearButton.addEventListener('click', () => lastOperationDisplay.setValue(''))
 
 const equalButton = document.getElementById("equal")
 equalButton.addEventListener('click', () =>
-  screenManager.printResult(calc(currentDisplay.getValue())))
+  screenManager.printResult(calculateResult(currentDisplay.getValue())))
 
 document.getElementById("percent").onclick = null
 document.getElementById("plus-minus").onclick = null
